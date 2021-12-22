@@ -1,32 +1,33 @@
 class Cycle{
-    
-    constructor(){
-        this._s = 4;
-        this._e = 1;
-    }
 
     cycleS(number){
-        let d = 3;
-        for(d; d <= number; d +=4){
-            this._s -= 4/d;
+        let den = 1;
+        let total = 0;
+        for(let i = 1; i <= number; i++){
+            if(i%2 == 1){
+                total += 4/den;
+            } else {
+                total -= 4/den
+            }
+            den += 2;
         }
 
-        d = 5;
-        for(d; d <= number; d += 4){
-            this._s += 4/d;
-        }
-
-      return this._s;
+      return total;
     }
 
     cycleE(number){
-        let e = 1;
+        let den = 1;
+        let total = 0;
         for(let i = 1; i <= number; i++){
-            e *= i;
-            this._e += 1/e;
+            if(i == 1){
+                total = 1;
+            } else {
+                den *= i - 1
+                total += 1/den;
+            }
         }
 
-      return this._e;
+      return total;
     }
 }
 
